@@ -1,4 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
+import telegramifyMarkdown from "telegramify-markdown";
 import {
   GoogleGenerativeAI,
   HarmCategory,
@@ -15,10 +16,12 @@ const telegramBot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
 
 async function runChat() {
   const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
-  const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+  const model = genAI.getGenerativeModel({
+    model: MODEL_NAME,
+  });
 
   const generationConfig = {
-    temperature: 0.5,
+    temperature: 1,
     topK: 1,
     topP: 1,
     maxOutputTokens: 2048,
@@ -50,15 +53,17 @@ async function runChat() {
   });
 
   telegramBot.on("message", async (msg) => {
-    if(msg.text === '/start'){
-      telegramBot.sendMessage('Hola mi pana! soy tu bot conectado a gemini, puedes escribirme lo que quieras y te responderé con un mensaje generado por la IA de google. cualquier respuesta rara, es culpa de los de computación emergente');
+    if (msg.text === "/start") {
+      telegramBot.sendMessage(
+        "Hola mi pana! soy tu bot conectado a gemini, puedes escribirme lo que quieras y te responderé con un mensaje generado por la IA de google. cualquier respuesta rara, es culpa de los de computación emergente"
+      );
       return;
     }
-    if(msg.text){
- 
+    if (msg.text) {
       const result = await chat.sendMessage(msg.text);
       const response = result.response;
-      telegramBot.sendMessage(msg.chat.id, response.text());
+      const formattedResponse = telegramifyMarkdown(response);
+      telegramBot.sendMessage(msg.chat.id, formattedResponse);
     }
   });
 }
