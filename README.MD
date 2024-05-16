@@ -14,7 +14,7 @@ Este proyecto implementa un bot de Telegram que utiliza la API de Google Generat
 1. Clona este repositorio en tu máquina local:
    ```bash
    git clone https://github.com/GianCaschetto/telegram-ia-agent
-   cd tu-repositorio
+   cd telegram-ia-agent
 2. Instala las dependencias del proyecto:
     npm install
 3. Crea un archivo .env en la raíz del proyecto y añade tus claves de API:
