@@ -1,13 +1,13 @@
-# Telegram Bot con Google Generative AI
+# Telegram Bot con Bot Gemini AI
 
-Este proyecto implementa un bot de Telegram que utiliza la API de Google Generative AI para generar respuestas a los mensajes enviados por los usuarios. El bot está configurado para manejar contenido sensible y generar respuestas seguras.
+Este proyecto implementa un bot de Telegram que utiliza la API de Gemini Google Studio para generar respuestas a los mensajes enviados por los usuarios. El bot está configurado para manejar contenido sensible y generar respuestas seguras.
 
 ## Requisitos
 
 - Node.js
 - NPM (Node Package Manager)
 - Una cuenta de Telegram para crear un bot y obtener un token de API
-- Una clave de API de Google para acceder a los servicios de Google Generative AI
+- Una clave de API de Google para acceder a los servicios de Gemini Google Studio
 
 ## Instalación
 
@@ -21,7 +21,7 @@ Este proyecto implementa un bot de Telegram que utiliza la API de Google Generat
     TELEGRAM_API=tu-telegram-api-key
     GOOGLE_API_KEY=tu-google-api-key
 
-Uso:
+## Uso
     Para ejecutar el bot, simplemente usa el siguiente comando:
-    node index.js
-    El bot comenzará a escuchar mensajes y responderá a cada mensaje recibido utilizando la API de Google Generative AI.
+    node index.js o npm start
+    El bot comenzará a escuchar mensajes y responderá a cada mensaje recibido utilizando la API de Gemini Google Studio.
