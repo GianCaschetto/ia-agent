@@ -60,8 +60,14 @@ async function runChat() {
 			if (msg.text) {
 				const result = await chat.sendMessage(msg.text);
 				const response = result.response;
-				const formattedResponse = telegramifyMarkdown(response);
-				telegramBot.sendMessage(msg.chat.id, formattedResponse);
+				if (response.text() !== "") {
+					telegramBot.sendMessage(msg.chat.id, response.text(), { parse_mode: "Markdown" });
+				} else {
+					telegramBot.sendMessage(
+						msg.chat.id,
+						"No se puede responder a este mensaje, por favor intenta con otro mensaje"
+					);
+				}
 			}
 		} catch (error) {
 			console.error("An error occurred:", error);
